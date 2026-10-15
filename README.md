@@ -31,6 +31,10 @@ Everything runs locally in the browser. There are no external JavaScript or CSS 
 
 The notes are also saved continuously in browser local storage, so moving between slides does not lose them.
 
+## HOW TO USE IT?
+
+Just give it to ChatGPT with the GitHub link and let it do your slides as requested. Micromanaging the content is strongly recommended. :)
+
 ## Editing a meeting
 
 The content is deliberately data-driven. Most meetings only require editing these two blocks:
