@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Note-taking Slides — Meeting Template</title>
+<style>
+:root{--navy:#17324d;--blue:#4f78a0;--ink:#263b50;--muted:#738397;--line:#dde5ed;--soft:#f5f8fb;--paper:#fbfcfd;--sidebar:#f4f7fa}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}button,textarea{font:inherit}
+.app{height:100vh;display:grid;grid-template-columns:245px minmax(560px,1fr) minmax(285px,330px);overflow:hidden}.sidebar{background:var(--sidebar);border-right:1px solid var(--line);padding:22px 15px;display:flex;flex-direction:column;min-height:0}.brand{padding:2px 9px 18px}.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6e8297;font-weight:800}.brand h1{font-size:18px;line-height:1.2;letter-spacing:-.02em;color:var(--navy);margin:7px 0 5px}.brand p{font-size:11px;color:var(--muted);line-height:1.45;margin:0}.nav{display:grid;gap:6px;overflow:auto}.navbtn{appearance:none;border:1px solid transparent;background:transparent;width:100%;display:grid;grid-template-columns:29px 1fr;gap:9px;text-align:left;padding:9px;border-radius:10px;color:#4a6076;cursor:pointer}.navbtn:hover{background:#fff;border-color:#e0e7ee}.navbtn.active{background:#fff;border-color:#d7e1ea;box-shadow:0 3px 12px rgba(35,61,86,.05);color:var(--navy)}.navnum{height:25px;width:25px;border-radius:7px;background:#e5edf4;color:#466887;display:grid;place-items:center;font-size:11px;font-weight:850}.navbtn.active .navnum{background:var(--navy);color:#fff}.navname{font-size:12px;font-weight:760;line-height:1.32}.navtime{font-size:10px;color:#8a98a7;margin-top:3px}.sidebarfoot{margin-top:auto;padding:14px 9px 0;border-top:1px solid var(--line);font-size:10px;line-height:1.5;color:#8593a2}
+.stage{padding:24px clamp(18px,2.6vw,42px) 28px;display:flex;flex-direction:column;min-width:0;min-height:0;overflow-y:auto}.stagehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--muted);font-size:11px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 10px 28px rgba(32,52,76,.055);padding:clamp(23px,2.3vw,36px)}.card h2{font-size:clamp(26px,2.25vw,35px);line-height:1.16;letter-spacing:-.035em;color:var(--navy);margin:0 0 8px}.subtitle{font-size:14px;line-height:1.55;color:#4c6177;margin:0}.context{margin:20px 0;padding:12px 15px;border-left:3px solid #78a0c8;background:#f2f6fa;border-radius:0 9px 9px 0;font-size:12px;line-height:1.55;color:#4b6177}.sectionlabel{font-size:10.5px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#6f8195;margin:0 0 10px}.updates{display:grid;gap:7px;margin:0 0 18px}.update{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;padding:10px 12px;background:var(--soft);border:1px solid #e2e9f0;border-radius:9px}.check{height:22px;width:22px;border-radius:7px;background:#fff;border:1px solid #ccd9e5;display:grid;place-items:center;color:var(--blue);font-weight:850;font-size:11px}.update p{margin:1px 0 0;font-size:12.5px;line-height:1.48}.questions{display:grid;gap:9px}.question{display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start;border:1px solid #e1e8ef;border-radius:10px;padding:12px 13px}.qnum{height:27px;width:27px;border-radius:8px;background:#edf3f9;color:#345d87;display:grid;place-items:center;font-size:12px;font-weight:850}.qtitle{font-size:14px;font-weight:780;line-height:1.3;color:#243a52}.qtext{font-size:12px;line-height:1.5;color:#52677b;margin:5px 0 0}.ideas{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}.idea{background:#f7fafd;border:1px solid #dfe7ef;border-radius:9px;padding:11px 12px}.idea .label{font-size:9.5px;font-weight:850;color:var(--blue);letter-spacing:.08em;text-transform:uppercase}.idea h4{font-size:12.5px;margin:4px 0 5px;color:#27425e}.idea p{font-size:11.5px;line-height:1.45;color:#51677c;margin:0}.foot{font-size:10.5px;line-height:1.5;color:#748497;margin:8px 1px 0}.diff{border:1px solid #e0e7ee;border-radius:10px;overflow:hidden;margin-bottom:15px}.drow{display:grid;grid-template-columns:105px 1fr 1fr;border-bottom:1px solid #e8edf2}.drow:last-child{border-bottom:0}.drow>div{padding:9px 11px;font-size:11px;line-height:1.45}.drow>div:first-child{background:#f6f8fa;font-weight:780;color:#526779}.drow>div+div{border-left:1px solid #e8edf2}.controls{display:flex;justify-content:flex-end;gap:8px;margin-top:11px}.move{border:1px solid #cbd7e2;border-radius:8px;background:#fff;color:var(--navy);font-size:12px;font-weight:750;padding:9px 13px;cursor:pointer}.move.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.move:disabled{opacity:.35;cursor:default}
+.notes{border-left:1px solid var(--line);background:#fff;display:flex;flex-direction:column;min-width:0;min-height:0}.noteshead{padding:22px 19px 14px;border-bottom:1px solid var(--line)}.noteshead .eyebrow{margin-bottom:6px}.noteshead h3{font-size:15px;color:var(--navy);margin:0;line-height:1.3}.notesbody{padding:15px 18px;display:flex;flex-direction:column;gap:10px;min-height:0;flex:1}.notesbody textarea{width:100%;flex:1;min-height:230px;resize:none;border:1px solid #d7e0e8;border-radius:10px;background:#fbfcfd;color:#263d54;padding:12px 13px;font-size:12.5px;line-height:1.55;outline:none}.notesbody textarea:focus{border-color:#9eb7cf;box-shadow:0 0 0 3px rgba(78,121,160,.08)}.notestatus{font-size:10.5px;color:#8493a2}.savearea{padding:14px 18px 18px;border-top:1px solid var(--line)}.savebtn{width:100%;border:1px solid #cad6e1;background:#f7f9fb;color:var(--navy);font-weight:760;border-radius:9px;padding:9px 10px;cursor:pointer}.savebtn:hover{background:#eef3f7}.savestatus{display:block;font-size:10px;line-height:1.45;color:#8694a3;margin-top:8px}
+@media(max-width:1100px){.app{grid-template-columns:210px 1fr 285px}.ideas{grid-template-columns:1fr}}@media(max-width:850px){.app{height:auto;min-height:100vh;grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line)}.nav{grid-template-columns:repeat(2,1fr)}.stage{overflow:visible}.notes{border-left:0;border-top:1px solid var(--line);min-height:430px}.notesbody textarea{min-height:260px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="eyebrow" id="meetingDate"></div>
+      <h1 id="meetingTitle"></h1>
+      <p id="meetingSubtitle"></p>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebarfoot">Arrow keys move between slides. Notes stay in this browser as you type.</div>
+  </aside>
+
+  <main class="stage">
+    <div class="stagehead"><span id="slideNo"></span><span id="slideTime"></span></div>
+    <section class="card" id="card"></section>
+    <div class="controls"><button class="move" id="prev">← Previous</button><button class="move primary" id="next">Next →</button></div>
+  </main>
+
+  <aside class="notes">
+    <div class="noteshead"><div class="eyebrow">Meeting notes</div><h3 id="noteTitle"></h3></div>
+    <div class="notesbody"><textarea id="noteBox" placeholder="Type notes for this slide…"></textarea><div class="notestatus" id="noteStatus">Saved in this browser as you type.</div></div>
+    <div class="savearea"><button class="savebtn" id="downloadNotesBtn">Download meeting record (.md)</button><span class="savestatus" id="saveStatus">The export combines the slide content and your notes.</span></div>
+  </aside>
+</div>
+<script>
+'use strict';
+
+/* --------------------------------------------------------------------------
+   EDIT THESE TWO OBJECTS FOR EACH MEETING.
+   The HTML, styling, note autosave and Markdown export do not need changing.
+---------------------------------------------------------------------------- */
+const MEETING = {
+  title: 'Project Review Meeting',
+  subtitle: 'Decisions, updates and open questions',
+  date: '18 October 2026',
+  exportFile: 'project-review-meeting-record.md'
+};
+
+const SLIDES = [
+  {
+    id: 'decision', time: 5,
+    title: 'Key decision',
+    subtitle: 'Start with the question that most needs the other person’s input.',
+    context: 'Give only the background needed to make the decision. Keep this section short enough to read while you are speaking.',
+    items: [
+      {title: 'What should we decide today?', text: 'Phrase this as a concrete question. Explain the two or three constraints that matter.'},
+      {title: 'What would change the decision?', text: 'Use a second question for uncertainty, evidence, feasibility or trade-offs.'}
+    ]
+  },
+  {
+    id: 'updates', time: 4,
+    title: 'Updates since last time',
+    subtitle: 'Share progress without turning the meeting into a status report.',
+    context: 'Use update cards for facts that do not need discussion, then keep only one question underneath.',
+    updates: [
+      'A collaborator has confirmed their role.',
+      'The first analysis is complete and the main result is stable.',
+      'A required administrative step is now underway.'
+    ],
+    items: [
+      {title: 'Does this change our next step?', text: 'Use the discussion question only if the updates require a decision or reaction.'}
+    ]
+  },
+  {
+    id: 'options', time: 8,
+    title: 'Options to discuss',
+    subtitle: 'Show one or two concrete possibilities without pretending they are final.',
+    context: 'Option cards work well when you need reactions to the shape of an idea before you refine the details.',
+    items: [
+      {
+        title: 'Which direction looks more useful?',
+        text: 'These are illustrative approaches. The final design can combine or modify them.',
+        ideas: [
+          {label: 'Option A', title: 'Focused approach', text: 'Narrow scope, faster delivery and a clearer primary outcome.'},
+          {label: 'Option B', title: 'Broader approach', text: 'More dimensions, stronger coverage, but greater cost and complexity.'}
+        ],
+        foot: 'Possible dimensions to vary: scope · timing · target group · delivery mode · cost · follow-up.'
+      },
+      {title: 'What is missing from these options?', text: 'Use this to surface an alternative you have not considered.'}
+    ]
+  },
+  {
+    id: 'open-question', time: 4,
+    title: 'Open question',
+    subtitle: 'Keep technical or administrative uncertainty isolated on one slide.',
+    context: 'State what you already know, then ask for advice only on the unresolved part.',
+    items: [
+      {title: 'Which route would you recommend?', text: 'Describe the alternatives briefly and note who will make the final decision.'}
+    ]
+  },
+  {
+    id: 'impact', time: 5,
+    title: 'Use and impact',
+    subtitle: 'Connect the work to a real user and a real decision.',
+    context: 'This slide is useful when the meeting needs to move from research findings to practical value.',
+    items: [
+      {title: 'Who would realistically use the result?', text: 'Name the organisation, team or type of practitioner rather than saying “policy makers” generally.'},
+      {title: 'What could they do differently?', text: 'Translate the output into a specific decision, service change or next research step.'}
+    ]
+  },
+  {
+    id: 'comparison', time: 4,
+    title: 'Comparison or positioning',
+    subtitle: 'A compact table for related work, alternatives or competing approaches.',
+    context: 'Use this format when the distinction is easier to understand side by side than in prose.',
+    difference: [
+      ['Scope', 'Existing approach: narrower', 'Our approach: broader'],
+      ['Evidence', 'Single data source', 'Multiple complementary sources'],
+      ['Decision', 'Describes the problem', 'Designed to inform an action']
+    ],
+    items: [
+      {title: 'Is this distinction clear enough?', text: 'Ask whether the positioning is credible and whether another comparison should be included.'}
+    ]
+  }
+];
+
+/* --------------------------------------------------------------------------
+   TEMPLATE LOGIC — normally no editing required below this line.
+---------------------------------------------------------------------------- */
+const $=id=>document.getElementById(id);
+const storageBase='note-taking-slides:'+(location.pathname||MEETING.title);
+const NOTES_KEY=storageBase+':notes', INDEX_KEY=storageBase+':index';
+let active=0, notes={}, updatedAt=0;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function safeFileName(name){return String(name||'meeting-record.md').replace(/[^a-z0-9._-]+/gi,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'meeting-record.md'}
+function load(){try{const raw=localStorage.getItem(NOTES_KEY);if(raw){const obj=JSON.parse(raw);notes=obj.entries||{};updatedAt=obj.updatedAt||0}const i=Number(localStorage.getItem(INDEX_KEY));if(Number.isInteger(i)&&i>=0&&i<SLIDES.length)active=i}catch(e){}}
+function saveLocal(){updatedAt=Date.now();try{localStorage.setItem(NOTES_KEY,JSON.stringify({updatedAt,entries:notes}));return true}catch(e){return false}}
+function ideas(q){if(!q.ideas)return'';return `<div class="ideas">${q.ideas.map(x=>`<div class="idea"><div class="label">${esc(x.label)}</div><h4>${esc(x.title)}</h4><p>${esc(x.text)}</p></div>`).join('')}</div>${q.foot?`<p class="foot">${esc(q.foot)}</p>`:''}`}
+function updates(s){if(!s.updates)return'';return `<div class="sectionlabel">Updates</div><div class="updates">${s.updates.map((x,i)=>`<div class="update"><span class="check">${i+1}</span><p>${esc(x)}</p></div>`).join('')}</div>`}
+function differences(s){if(!s.difference)return'';return `<div class="sectionlabel">Comparison</div><div class="diff">${s.difference.map(r=>`<div class="drow"><div>${esc(r[0])}</div><div>${esc(r[1])}</div><div>${esc(r[2])}</div></div>`).join('')}</div>`}
+function questions(s){if(!s.items?.length)return'';return `<div class="sectionlabel">${s.items.length===1?'Discussion':'Discussion points'}</div><div class="questions">${s.items.map((q,i)=>`<div class="question"><span class="qnum">${i+1}</span><div><div class="qtitle">${esc(q.title)}</div><p class="qtext">${esc(q.text||'')}</p>${ideas(q)}</div></div>`).join('')}</div>`}
+function card(s){return `<h2>${esc(s.title)}</h2><p class="subtitle">${esc(s.subtitle||'')}</p>${s.context?`<div class="context">${esc(s.context)}</div>`:''}${updates(s)}${differences(s)}${questions(s)}`}
+function navBtn(s,i){return `<button class="navbtn ${i===active?'active':''}" data-i="${i}"><span class="navnum">${i+1}</span><span><div class="navname">${esc(s.title)}</div><div class="navtime">${s.time||'—'} min</div></span></button>`}
+function render(){const s=SLIDES[active];$('meetingTitle').textContent=MEETING.title;$('meetingSubtitle').textContent=MEETING.subtitle||'';$('meetingDate').textContent=MEETING.date||'';$('nav').innerHTML=SLIDES.map(navBtn).join('');document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(Number(b.dataset.i)));$('card').innerHTML=card(s);$('slideNo').textContent=`${active+1} of ${SLIDES.length}`;$('slideTime').textContent=s.time?`${s.time} min`:'';$('noteTitle').textContent=s.title;$('noteBox').value=notes[s.id]||'';$('prev').disabled=active===0;$('next').disabled=active===SLIDES.length-1;try{localStorage.setItem(INDEX_KEY,String(active))}catch(e){}}
+function go(i){if(i<0||i>=SLIDES.length||i===active)return;active=i;render();document.querySelector('.stage').scrollTo(0,0)}
+function meetingRecord(){const lines=[`# ${MEETING.title}`,'',MEETING.date?`Date: ${MEETING.date}`:'',MEETING.subtitle?`_${MEETING.subtitle}_`:'','','This record combines the material shown in the meeting slides with notes entered during the meeting.',''];SLIDES.forEach((s,i)=>{lines.push(`## ${i+1}. ${s.title}`,'');if(s.subtitle)lines.push(`_${s.subtitle}_`,'');if(s.context)lines.push('### Starting point','',s.context,'');if(s.updates?.length){lines.push('### Updates','');s.updates.forEach(x=>lines.push(`- ${x}`));lines.push('')}if(s.difference?.length){lines.push('### Comparison','','| Dimension | Option / existing approach | Our approach / alternative |','|---|---|---|');s.difference.forEach(r=>lines.push(`| ${r[0]} | ${r[1]} | ${r[2]} |`));lines.push('')}if(s.items?.length){lines.push('### Discussion points','');s.items.forEach((q,j)=>{lines.push(`${j+1}. **${q.title}**`);if(q.text)lines.push(`   ${q.text}`);if(q.ideas?.length){lines.push('');q.ideas.forEach(x=>lines.push(`   - **${x.label}: ${x.title}** — ${x.text}`));if(q.foot)lines.push(`   - _${q.foot}_`)}lines.push('')})}lines.push('### My meeting notes','',(notes[s.id]||'').trim()||'_No notes recorded._','','---','')});return lines.filter((x,i,a)=>!(x===''&&a[i-1]===''&&a[i-2]==='')).join('\n')+'\n'}
+function downloadRecord(){const blob=new Blob([meetingRecord()],{type:'text/markdown;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=safeFileName(MEETING.exportFile);document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);$('saveStatus').textContent='Meeting record downloaded. Browser autosave remains active.'}
+$('noteBox').addEventListener('input',()=>{notes[SLIDES[active].id]=$('noteBox').value;const ok=saveLocal();$('noteStatus').textContent=ok?'Saved in this browser as you type.':'Browser autosave unavailable — download the record now.'});
+$('downloadNotesBtn').onclick=downloadRecord;$('prev').onclick=()=>go(active-1);$('next').onclick=()=>go(active+1);document.addEventListener('keydown',e=>{if(document.activeElement===$('noteBox')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='ArrowRight'||e.key==='PageDown')go(active+1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(active-1)});
+load();render();
+</script>
+</body>
+</html>
