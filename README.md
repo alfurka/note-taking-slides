@@ -4,7 +4,7 @@ A minimal, single-file HTML meeting deck with a notes panel beside the slides.
 
 The idea is simple: **show the discussion material and take notes in the same window**. Notes are saved automatically in browser local storage while you type. At any point, **Download meeting record (.md)** exports one Markdown file containing both the slide content and your notes.
 
-![Template preview](assets/template-preview.png)
+![Template preview](assets/template-preview.jpg)
 
 ## Why this exists
 
@@ -133,7 +133,7 @@ Shortcuts are disabled while the notes box is active, so arrow keys behave norma
 ## Files
 
 - [`template.html`](template.html) — reusable self-contained template
-- [`assets/template-preview.png`](assets/template-preview.png) — preview used in this README
+- [`assets/template-preview.jpg`](assets/template-preview.jpg) — preview used in this README
 
 ## Design philosophy
 
